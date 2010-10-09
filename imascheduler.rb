@@ -43,11 +43,26 @@ def input_schedule
   print "name>>"
   name = gets.chomp
   
+  @calender.calender.each do |s|
+    if s.date == date && s.time == time
+      puts "Duplicate schedule."
+      return
+    end
+  end
+  
   schedule = Schedule.new(date, time, type, comp, name)
+  @calender.add(schedule)
 end
 
 def show
-  p @calender
+  calender = @calender.calender
+  calender.sort! {|a, b|
+    a.time <=> b.time
+    a.date <=> b.date    
+  }
+  calender.each do |s|
+    puts "date:#{s.date} time:#{s.time} type:#{s.type} company:#{s.comp} name:#{s.name}"
+  end
 end
 
 loop do
@@ -57,8 +72,7 @@ loop do
   when "s", "show"
     show
   when "a", "add"
-    schedule = input_schedule
-    @calender.add(schedule)
+    input_schedule
   when "q", "quit"
     break
   else
