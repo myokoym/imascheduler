@@ -9,7 +9,7 @@ def input_schedule
     print "date(0/1/2)>>"
     date = gets.chomp
     if /[012]/ =~ date
-      date = date
+      date = date.to_i
       break
     end
     puts "one more."
