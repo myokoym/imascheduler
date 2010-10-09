@@ -9,7 +9,8 @@ class Calender
   end
   
   def forward
-    @calender.shift
+    @calender.reject! {|s| s.date == 0 }
+    @calender.map {|s| s.date -= 1 }
   end
 end
 

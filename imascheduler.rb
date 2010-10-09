@@ -73,6 +73,8 @@ loop do
     show
   when "a", "add"
     input_schedule
+  when "fw", "forward"
+    @calender.forward
   when "q", "quit"
     break
   else

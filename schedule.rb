@@ -6,6 +6,7 @@ class Schedule
     @comp = comp
     @name = name
   end
-  attr_reader :date, :time, :type, :comp, :name
+  attr_accessor :date
+  attr_reader :time, :type, :comp, :name
 end
 
